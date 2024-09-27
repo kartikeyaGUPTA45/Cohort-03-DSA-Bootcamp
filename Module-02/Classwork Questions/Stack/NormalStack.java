@@ -8,22 +8,47 @@ class CustomStack {
   
   CustomStack(int capacity) {
     this.capacity = capacity; // capacity = 5
-    arr [] = new int [capacity]; // array which can holds 5 elements
+    arr = new int [capacity]; // array which can holds 5 elements
   }
   
   void push(int data) {
+    if (size == capacity) {
+      System.out.println("Stack overflow");
+      return;
+    }
     
+    arr[size] = data;
+    size++;
   }
   
   void pop() {
+    if (size == 0) {
+      System.out.println("Stack underflow");
+      return;
+    }
+    
+    int data = arr[size-1];
+    System.out.println(data);
+    size--;
+    
     
   }
   
   void display() {
-    
+    for(int i=size-1; i>= 0;i--) {
+      System.out.print(arr[i] + " ");
+    }
+    System.out.println();
   }
   
   void top() {
+    if (size == 0) {
+      System.out.println("Stack underflow");
+      return;
+    }
+    
+    int data = arr[size-1];
+    System.out.println(data);
     
   }
   
