@@ -1,8 +1,6 @@
 import java.io.*;
 import java.util.*;
 
-
-
 public class Solution {
   
     public static class Node {
@@ -44,6 +42,25 @@ public class Solution {
       postOT(node.right);
       System.out.print(node.data + " ");
     }
+  
+  // Code this  and dry run (5 + 5 mins)
+    public static void levelOT(Node node) {
+      Queue<Node> q = new LinkedList<>();
+      q.add(node);
+      
+      while(q.size() > 0) {
+        Node n = q.remove();
+        System.out.print(n.data + " ");
+        
+        if (n.left != null) {
+          q.add(n.left);
+        }
+        
+        if (n.right != null) {
+          q.add(n.right);
+        }
+      }
+    }
 
     public static void main(String[] args) {
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
@@ -80,6 +97,12 @@ public class Solution {
       System.out.println();
       System.out.println("PostOrder Traversal: ");
       postOT(a);
+      System.out.println();
+      System.out.println("Level Order Travsersal: ");
+      levelOT(a);
       
+      
+      // Complete the code + Dry run (all the traversals) [5 mins + 10 mins] => share the dry run on the whatsapp group
+       
     }
 }
