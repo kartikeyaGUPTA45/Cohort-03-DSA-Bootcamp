@@ -81,22 +81,51 @@ public class Main {
 
   public static int size(Node node) {
     // write your code here
-     
+    if (node == null) {
+      return 0;
+    }
+    
+    int leftSize = size(node.left);
+    int rightSize = size(node.right);
+    
+     return leftSize + rightSize + 1;
   }
 
   public static int sum(Node node) {
     // write your code here
-      
+    if (node == null) {
+      return 0;
+    }
+    
+    int leftSum = sum(node.left);
+    int rightSum = sum(node.right);
+    
+    return leftSum + rightSum + node.data;
   }
 
   public static int max(Node node) {
     // write your code here
-      
+    if (node == null) {
+      return Integer.MIN_VALUE;
+    }
+    
+    int leftMax = max(node.left);
+    int rightMax = max(node.right);
+    
+    return Math.max(node.data, Math.max(rightMax, leftMax)); 
+    
   }
 
   public static int height(Node node) {
     // write your code here
-     
+    if (node == null) {
+      return -1;
+    }
+    
+    int leftHt = height(node.left);
+    int rightHt = height(node.right);
+    
+    return Math.max(leftHt, rightHt) + 1;
   }
 
   public static void main(String[] args) throws Exception {
