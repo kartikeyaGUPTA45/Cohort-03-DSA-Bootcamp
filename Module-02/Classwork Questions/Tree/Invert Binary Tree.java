@@ -108,8 +108,19 @@ public class Main {
       }
     }
   }
-     public static Node invertTree(Node root) {
-          
+     public static Node invertTree(Node node) {
+          if (node == null) {
+            return null;
+          }
+       
+       Node temp = node.left;
+       node.left = node.right;
+       node.right = temp;
+       
+       node.left = invertTree(node.left);
+       node.right = invertTree(node.right);
+       
+       return node;
     }
   
   
