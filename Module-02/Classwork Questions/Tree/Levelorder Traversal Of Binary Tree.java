@@ -74,7 +74,28 @@ public class Main {
   }
 
   public static void levelOrder(Node node) {
-
+    Queue<Node> q = new LinkedList<>();
+    q.add(node);
+    
+    while(q.size() > 0) {
+      int sz = q.size();
+      
+      while(sz > 0) {
+        Node n = q.remove();
+        System.out.print(n.data + " ");
+        
+        if (n.left != null) {
+          q.add(n.left);
+        }
+        
+        if (n.right != null) {
+          q.add(n.right);
+        }   
+        sz--;
+      }
+      
+      System.out.println();
+    }
   }
   
   public static void main(String[] args) throws Exception {
