@@ -66,7 +66,20 @@ public class Main {
 
 
    public static boolean isSameTree(Node p, Node q) {
+     
+     if (p == null && q == null) {
+       return true;
+     }
+     
+      if (p == null || q == null) {
+        return false;
+      }
     
+      boolean cond1 = (p.data == q.data);
+      boolean cond2 = isSameTree(p.left, q.left);
+      boolean cond3 = isSameTree(p.right, q.right);
+     
+      return cond1 && cond2 && cond3;
    }
   
     public static void main(String[] args) throws Exception {
