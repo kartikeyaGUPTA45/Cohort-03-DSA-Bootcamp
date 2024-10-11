@@ -66,6 +66,19 @@ public class Main {
 
    public static int sumOfLeftLeaves(Node root) {
      
+     if (root == null) {
+       return 0;
+     }
+     
+     if (root.left != null && root.left.left == null && root.left.right == null) {
+       return root.left.data + sumOfLeftLeaves(root.right);
+     }
+     
+     int leftSide = sumOfLeftLeaves(root.left);
+     int rightSide = sumOfLeftLeaves(root.right);
+     
+     return leftSide + rightSide;
+     
    }
   
    public static void main(String[] args) throws Exception {
