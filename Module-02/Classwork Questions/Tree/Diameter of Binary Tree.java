@@ -63,9 +63,30 @@ public class Main {
 
     return root;
   }
-
+   
+    public static int height(Node root) {
+      if (root == null) return -1;
+      
+      int lt = height(root.left);
+      int rt = height(root.right);
+      
+      return Math.max(lt,rt) + 1; 
+    }  
+  
     public static int diameterOfBinaryTree(Node root) {
-        
+        if (root == null) {
+          return 0;
+        }
+      
+      int ld = diameterOfBinaryTree(root.left);
+      int rd = diameterOfBinaryTree(root.right);
+      
+      int h1 = height(root.left);
+      int h2 = height(root.right);
+      
+      int d = h1 + h2 + 2;
+      
+      return Math.max(d,Math.max(ld,rd));
     }
   
     public static void main(String[] args) throws Exception {
