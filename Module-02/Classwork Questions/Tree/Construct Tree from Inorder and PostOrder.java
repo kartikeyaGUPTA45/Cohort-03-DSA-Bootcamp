@@ -39,7 +39,31 @@ public class Main {
         }
     }
   
+    public static Node helper(int [] in, int isi, int iei, int post[], int psi, int pei) {
+      
+      if (isi > iei) {
+        return null;
+      }
+      
+      Node node = new Node(post[pei]);
+      
+      int idx = isi;
+      
+      while(in[idx] != post[pei]) {
+        idx++;
+      }
+      
+      int tnn = idx - isi;
+      
+      node.left = helper(in, isi, idx-1,post,psi, psi+tnn-1);
+      node.right = helper(in,idx+1, iei,post, psi+tnn, pei-1);
+      
+      return node;
+      
+    }
+  
     public static Node constructTree(int [] post, int [] in){
+      return helper(in, 0, in.length-1, post, 0, post.length-1);
       
     }
 
