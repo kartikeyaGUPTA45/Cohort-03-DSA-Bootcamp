@@ -84,7 +84,19 @@ public class Main {
   }
   
   public static Node searchBST(Node root, int val) {
-   
+     if (root == null) {
+       return null;
+     }
+    
+    if (root.data == val) {
+      return root;
+    }
+    
+    if (root.data > val) {
+      return searchBST(root.left, val);
+    } else {
+      return searchBST(root.right, val);
+    }
   }
   
   public static void main(String[] args) throws Exception {
