@@ -65,8 +65,27 @@ public class Main {
     return root;
   }
 
-  public static Node lowestCommonAncestor( Node root,  int p,  int q) {
-      
+  public static Node lowestCommonAncestor( Node root,  Node p,  Node q) {
+    if (root == null) {
+      return null;
+    }
+    
+    if (p == null || q == null) {
+      return null;
+    }
+    
+    if (p.data == root.data || q.data == root.data) {
+      return root;
+    }
+    
+    if (p.data < root.data && q.data < root.data) {
+      return lowestCommonAncestor(root.left, p, q);
+    } else if (p.data > root.data && q.data > root.data) {
+      return lowestCommonAncestor(root.right, p, q);
+    } else {
+      return root;
+    }
+    
   }
   
   
@@ -83,8 +102,11 @@ public class Main {
       }
     }
 
-    int p = Integer.parseInt(br.readLine());
-    int q = Integer.parseInt(br.readLine());
+    int a = Integer.parseInt(br.readLine());
+    int b = Integer.parseInt(br.readLine());
+    
+    Node p = new Node(a, null, null);
+    Node q = new Node(b, null, null);
 
     Node root = construct(arr);
       
