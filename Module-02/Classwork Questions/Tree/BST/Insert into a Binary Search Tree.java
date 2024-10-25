@@ -66,7 +66,20 @@ public class Main {
   }
   
    public static Node insertIntoBST(Node root, int val) {
-      
+     
+     if (root == null) {
+       return new Node(val, null, null);
+     }
+     
+     
+     if (val > root.data) // move to right side
+       root.right = insertIntoBST(root.right, val);
+     else if (val < root.data) {
+       root.left = insertIntoBST(root.left, val);
+     }
+     
+     return root;
+     
     }
   
     public static void levelOrder(Node node) {
