@@ -66,7 +66,24 @@ public class Main {
   }
 
   public static int rangeSumBST(Node root, int low, int high) {
-      
+      if (root == null) {
+        return 0;
+      }
+    
+      int sum = 0;
+      if (root.data >= low && root.data <= high) {
+        sum += root.data;
+      }
+    
+      if (root.data > low) {
+        sum += rangeSumBST(root.left, low, high);
+      }
+    
+    if (root.data < high) {
+      sum += rangeSumBST(root.right, low, high);
+    }
+    
+    return sum;
   }
   
   
