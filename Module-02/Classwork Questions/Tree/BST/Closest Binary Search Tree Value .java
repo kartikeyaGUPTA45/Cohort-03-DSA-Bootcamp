@@ -65,8 +65,34 @@ public class Main {
     return root;
   }
   
+   public static double diff;
+   public static int ans; 
+    
+   public static void helper(Node root, double target) {
+     if (root == null) return;
+     
+     double tempDiff = Math.abs(Math.abs(root.data) - Math.abs(target));
+     
+     if (diff > tempDiff) {
+       diff = tempDiff;
+       ans = root.data;
+     }
+     
+     if (diff == tempDiff) {
+       if (ans > root.data) ans = root.data; 
+     }
+     
+     if (root.data > target) {
+       helper(root.left, target);
+     } else if (root.data < target) {
+       helper(root.right, target);
+     }
+   } 
+   
    public static int closestValue( Node root, double target) {
-      
+      diff = Double.MAX_VALUE;
+      helper(root, target);
+      return ans;
    }
         
 
